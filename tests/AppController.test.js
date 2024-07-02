@@ -1,6 +1,6 @@
-import request from 'supertest';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import request from 'supertest';
 import app from '../server';
 
 chai.use(chaiHttp);
@@ -36,6 +36,5 @@ describe('AppController and AuthController Endpoints', () => {
       const response = await request(app).get('/disconnect');
       expect(response).to.have.status(401);
     });
-  });
-
-
+  }
+);

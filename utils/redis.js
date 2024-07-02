@@ -1,5 +1,9 @@
 import redis from 'redis';
 
+/**
+  * RedisClient class to interact with a Redis database.
+  */
+
 class RedisClient {
   constructor() {
     this.client = redis.createClient();

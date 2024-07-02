@@ -1,6 +1,6 @@
-import request from 'supertest';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import request from 'supertest';
 import app from '../server';
 
 chai.use(chaiHttp);
@@ -30,5 +30,4 @@ describe('UsersController Endpoints', () => {
     expect(response).to.have.status(400);
     expect(response.body).to.have.property('error').to.equal('Already exist');
   });
-
 });

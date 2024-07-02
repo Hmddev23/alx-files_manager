@@ -1,11 +1,15 @@
-import { v4 as uuidv4 } from 'uuid';
 import fs from 'fs';
 import path from 'path';
-import { ObjectId } from 'mongodb';
+import { v4 as uuidv4 } from 'uuid';
 import mime from 'mime-types';
-import dbClient from '../utils/db';
+import { ObjectId } from 'mongodb';
 import redisClient from '../utils/redis';
+import dbClient from '../utils/db';
 import { fileQueue } from '../worker';
+
+/**
+  * FilesController class to handle file-related requests.
+  */
 
 class FilesController {
   static async postUpload(req, res) {
@@ -150,8 +154,7 @@ class FilesController {
     const fileId = req.params.id;
     const { size } = req.query;
     const file = await dbClient.dbClient.collection('files').findOne({ _id: ObjectId(fileId) });
-    // file private and user not signin
-    // file private and user is sign in but not the owner
+
     if (!file || (!file.isPublic && (!userId || userId !== file.userId.toString()))) {
       return res.status(404).json({ error: 'Not found' });
     }

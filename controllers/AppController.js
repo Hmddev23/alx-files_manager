@@ -1,6 +1,10 @@
 import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
 
+/**
+  * AppController class to handle application-level requests.
+  */
+
 class AppController {
   static getStatus(req, res) {
     const redisLive = redisClient.isAlive();

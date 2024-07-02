@@ -1,9 +1,8 @@
-import { expect } from 'chai';
 import request from 'supertest';
+import { expect } from 'chai';
 import app from '../server';
 
 describe('FilesController Endpoints', () => {
-
   before(async () => {
     await dbClient.dbClient.collection('users').deleteMany({});
     await dbClient.dbClient.collection('files').deleteMany({});
@@ -62,7 +61,4 @@ describe('FilesController Endpoints', () => {
     expect(getFileResponse.body).to.have.property('name').to.equal('testFile');
 
   });
-
-
-
 });
